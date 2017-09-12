@@ -8,7 +8,7 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 
-    <dubbo:application name="tro-upms-rpc-service" owner="tykf" organization="bigdata"/>
+    <dubbo:application name="tro-upms-rpc-service" owner="upms" organization="tro"/>
 
     <dubbo:registry address="zookeeper://120.26.198.195:2181"/>
 

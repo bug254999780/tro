@@ -12,8 +12,8 @@ import java.util.UUID;
  * date 2017/6/1 9:44.
  *
  * @author xqm
- *         tykf-master
- *         com.ideal.tykf.dubbo.base
+ *         tro-master
+ *         com.ideal.tro.dubbo.base
  */
 @Getter
 @Setter

@@ -175,7 +175,7 @@
     </dependencies>
 
     <build>
-        <finalName>tykf-monitor</finalName>
+        <finalName>tro-monitor</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>

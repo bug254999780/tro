@@ -12,7 +12,6 @@
     <packaging>war</packaging>
 
     <name>tro-upms-server Maven Webapp</name>
-    <url>http://www.zhangshuzheng.cn</url>
 
     <dependencies>
         <dependency>

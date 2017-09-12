@@ -22,15 +22,16 @@ public class ZhengAdminUtil implements InitializingBean, ServletContextAware {
 
     @Override
     public void setServletContext(ServletContext servletContext) {
-        _log.info("===== 开始解压zheng-admin =====");
-        String version = PropertiesFileUtil.getInstance("zheng-admin-client").get("zheng.admin.version");
-        _log.info("zheng-admin.jar 版本: {}", version);
+        _log.info("===== 开始解压{}","tro-admin");
+        String version = PropertiesFileUtil.getInstance("tro-admin-client").get("tro.admin.version");
+        String name = PropertiesFileUtil.getInstance("tro-admin-client").get("tro.admin.name");
+        _log.info("{}.jar 版本: {}",name, version);
         String jarPath = servletContext.getRealPath("/WEB-INF/lib/tro-admin-" + version + ".jar");
-        _log.info("zheng-admin.jar 包路径: {}", jarPath);
+        _log.info("{}-{}.jar 包路径: {}",name, jarPath);
         String resources = servletContext.getRealPath("/") + "/resources/tro-admin";
-        _log.info("zheng-admin.jar 解压到: {}", resources);
+        _log.info("{}-{}.jar  解压到: {}",name, jarPath, resources);
         JarUtil.decompress(jarPath, resources);
-        _log.info("===== 解压zheng-admin完成 =====");
+        _log.info("===== 解压{}-{}.jar完成 =====",name,version);
     }
 
 }
