@@ -1,6 +1,7 @@
 package com.ideal.tro.upms.server.controller;
 
 import com.ideal.tro.common.base.BaseController;
+import com.ideal.tro.common.util.PropertiesFileUtil;
 import com.ideal.tro.common.util.RedisUtil;
 import com.ideal.tro.upms.client.shiro.session.UpmsSession;
 import com.ideal.tro.upms.client.shiro.session.UpmsSessionDao;
@@ -75,12 +76,14 @@ public class SSOController extends BaseController {
         if (0 == count) {
             throw new RuntimeException(String.format("未注册的系统:%s", appid));
         }
+        _log.info("redirect:/sso/login?backurl=" + URLEncoder.encode(backurl, "utf-8"));
         return "redirect:/sso/login?backurl=" + URLEncoder.encode(backurl, "utf-8");
     }
-
+//  /sso/login
     @ApiOperation(value = "登录")
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(HttpServletRequest request) {
+
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
         String serverSessionId = session.getId().toString();
@@ -92,7 +95,7 @@ public class SSOController extends BaseController {
             String backurl = request.getParameter("backurl");
             String username = (String) subject.getPrincipal();
             if (StringUtils.isBlank(backurl)) {
-                backurl = "/";
+                backurl="/"+ PropertiesFileUtil.getInstance("config").get("app.name")+"/manage/index";
             } else {
                 if (backurl.contains("?")) {
                     backurl += "&upms_code=" + code + "&upms_username=" + username;
@@ -100,10 +103,10 @@ public class SSOController extends BaseController {
                     backurl += "?upms_code=" + code + "&upms_username=" + username;
                 }
             }
-            _log.debug("认证中心帐号通过，带code回跳：{}", backurl);
+            _log.info("认证中心帐号通过，带code回跳：{}", backurl);
             return "redirect:" + backurl;
         }
-        return "/sso/login.jsp";
+        return "/sso/login";
     }
 
     @ApiOperation(value = "登录")
@@ -113,6 +116,7 @@ public class SSOController extends BaseController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String rememberMe = request.getParameter("rememberMe");
+
         if (StringUtils.isBlank(username)) {
             return new UpmsResult(UpmsResultConstant.EMPTY_USERNAME, "帐号不能为空！");
         }
@@ -155,8 +159,11 @@ public class SSOController extends BaseController {
         }
         // 回跳登录前地址
         String backurl = request.getParameter("backurl");
+        _log.info("backurl is {}",backurl);
         if (StringUtils.isBlank(backurl)) {
-            return new UpmsResult(UpmsResultConstant.SUCCESS, "/");
+            backurl="/"+ PropertiesFileUtil.getInstance("config").get("app.name")+"/manage/index";
+            _log.info("backurl isBlank {}",backurl);
+            return new UpmsResult(UpmsResultConstant.SUCCESS, backurl );
         } else {
             return new UpmsResult(UpmsResultConstant.SUCCESS, backurl);
         }
@@ -181,6 +188,7 @@ public class SSOController extends BaseController {
         SecurityUtils.getSubject().logout();
         // 跳回原地址
         String redirectUrl = request.getHeader("Referer");
+        _log.info("redirectUrl is {}",redirectUrl);
         if (null == redirectUrl) {
             redirectUrl = "/";
         }

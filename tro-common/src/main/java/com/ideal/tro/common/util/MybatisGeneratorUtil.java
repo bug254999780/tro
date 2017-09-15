@@ -54,7 +54,7 @@ public class MybatisGeneratorUtil {
 		serviceMock_vm = MybatisGeneratorUtil.class.getResource(serviceMock_vm).getPath().replaceFirst("/", "");
 		serviceImpl_vm = MybatisGeneratorUtil.class.getResource(serviceImpl_vm).getPath().replaceFirst("/", "");
 
-		String targetProject = module + "/" + module + "-dao";
+		String targetProject ="/generator";
 		String basePath = MybatisGeneratorUtil.class.getResource("/").getPath().replace("/target/classes/", "").replace(targetProject, "").replaceFirst("/", "");
 		String generatorConfig_xml = MybatisGeneratorUtil.class.getResource("/").getPath().replace("/target/classes/", "") + "/src/main/resources/generatorConfig.xml";
 		targetProject = basePath + targetProject;
@@ -78,7 +78,7 @@ public class MybatisGeneratorUtil {
 			}
 			jdbcUtil.release();
 
-			String targetProject_sqlMap = basePath + module + "/" + module + "-rpc-service";
+			String targetProject_sqlMap = basePath + "/generator";
 			context.put("tables", tables);
 			context.put("generator_javaModelGenerator_targetPackage", package_name + ".dao.model");
 			context.put("generator_sqlMapGenerator_targetPackage", package_name + ".dao.mapper");
@@ -112,8 +112,8 @@ public class MybatisGeneratorUtil {
 
 		System.out.println("========== 开始生成Service ==========");
 		String ctime = new SimpleDateFormat("yyyy/M/d").format(new Date());
-		String servicePath = basePath + module + "/" + module + "-rpc-api" + "/src/main/java/" + package_name.replaceAll("\\.", "/") + "/rpc/api";
-		String serviceImplPath = basePath + module + "/" + module + "-rpc-service" + "/src/main/java/" + package_name.replaceAll("\\.", "/") + "/rpc/service/impl";
+		String servicePath = basePath +  "/generator";
+		String serviceImplPath = basePath +  "/generator";
 		for (int i = 0; i < tables.size(); i++) {
 			String model = StringUtil.lineToHump(ObjectUtils.toString(tables.get(i).get("table_name")));
 			String service = servicePath + "/" + model + "Service.java";

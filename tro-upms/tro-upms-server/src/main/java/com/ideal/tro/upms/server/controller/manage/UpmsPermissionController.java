@@ -52,7 +52,7 @@ public class UpmsPermissionController extends BaseController {
     @RequiresPermissions("upms:permission:read")
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
-        return "/manage/permission/index.jsp";
+        return "/manage/permission/index";
     }
 
     @ApiOperation(value = "权限列表")
@@ -103,7 +103,7 @@ public class UpmsPermissionController extends BaseController {
     public String create(ModelMap modelMap) {
         List<UpmsSystem> upmsSystems = upmsSystemService.selectAll();
         modelMap.put("upmsSystems", upmsSystems);
-        return "/manage/permission/create.jsp";
+        return "/manage/permission/create";
     }
 
     @ApiOperation(value = "新增权限")
@@ -143,7 +143,7 @@ public class UpmsPermissionController extends BaseController {
         UpmsPermission permission = upmsPermissionService.selectByPrimaryKey(id);
         modelMap.put("permission", permission);
         modelMap.put("upmsSystems", upmsSystems);
-        return "/manage/permission/update.jsp";
+        return "/manage/permission/update";
     }
 
     @ApiOperation(value = "修改权限")

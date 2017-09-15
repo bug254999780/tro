@@ -10,7 +10,7 @@
 
     <artifactId>tro-upms-server</artifactId>
     <packaging>war</packaging>
-
+    <version>1.0.0</version>
     <name>tro-upms-server Maven Webapp</name>
 
     <dependencies>
@@ -52,12 +52,14 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+
         </profile>
         <profile>
             <id>test</id>
             <properties>
                 <env>test</env>
             </properties>
+
         </profile>
         <profile>
             <id>prod</id>
@@ -88,7 +90,7 @@
                 <configuration>
                     <scanIntervalSeconds>3</scanIntervalSeconds>
                     <webApp>
-                        <contextPath>/</contextPath>
+                        <contextPath>/tro-upms-server/</contextPath>
                     </webApp>
                     <httpConnector>
                         <port>1111</port>

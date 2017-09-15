@@ -10,7 +10,7 @@
 
     <artifactId>tro-upms-rpc-api</artifactId>
     <packaging>jar</packaging>
-
+    <version>1.0.0</version>
     <name>tro-upms-rpc-api</name>
 
 

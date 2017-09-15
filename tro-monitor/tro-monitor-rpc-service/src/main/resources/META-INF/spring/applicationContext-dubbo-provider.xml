@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="tro-monitor-rpc-service"/>
+
+    <dubbo:registry address="zookeeper://120.26.198.195:2181"/>
+
+    <dubbo:protocol name="dubbo" port="20882"/>
+
+    <!--<dubbo:monitor address="120.26.198.195:6060"/>-->
+
+    <dubbo:service interface="com.ideal.tro.monitor.rpc.api.HiveTableService" ref="hiveTableService" timeout="600000"/>
+    <bean id="hiveTableService" class="com.ideal.tro.monitor.rpc.service.impl.HiveTableServiceImpl"/>
+
+    <dubbo:service interface="com.ideal.tro.monitor.rpc.api.HiveTableLogService" ref="hiveTableLogService" timeout="600000"/>
+    <bean id="hiveTableLogService" class="com.ideal.tro.monitor.rpc.service.impl.HiveTableLogServiceImpl"/>
+
+</beans>

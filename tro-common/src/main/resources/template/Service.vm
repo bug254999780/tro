@@ -2,12 +2,10 @@ package ${package_name}.rpc.api;
 
 import com.ideal.tro.common.base.BaseService;
 import ${package_name}.dao.model.${model};
-import ${package_name}.dao.model.${model}Example;
-
 /**
 * ${model}Service接口
-* Created by shuzheng on ${ctime}.
+* Created by xqm on ${ctime}.
 */
-public interface ${model}Service extends BaseService<${model}, ${model}Example> {
+public interface ${model}Service extends BaseService<${model}> {
 
 }

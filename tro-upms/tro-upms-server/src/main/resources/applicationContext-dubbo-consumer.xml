@@ -11,7 +11,7 @@
     <dubbo:application name="tro-upms-server" owner="upms" organization="tro"/>
     <dubbo:registry file="./tro-upms-server-dubbo.cache" address="zookeeper://120.26.198.195:2181"/>
 
-    <dubbo:monitor address="120.26.198.195:6060"/>
+    <!--<dubbo:monitor address="120.26.198.195:6060"/>-->
     <!--<dubbo:monitor protocol="registry"/>-->
 
     <!-- 订阅服务 -->

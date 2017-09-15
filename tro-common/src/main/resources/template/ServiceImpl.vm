@@ -4,7 +4,6 @@ import com.ideal.tro.common.annotation.BaseService;
 import com.ideal.tro.common.base.BaseServiceImpl;
 import ${package_name}.dao.mapper.${model}Mapper;
 import ${package_name}.dao.model.${model};
-import ${package_name}.dao.model.${model}Example;
 import ${package_name}.rpc.api.${model}Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,13 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
 * ${model}Service实现
-* Created by shuzheng on ${ctime}.
+* Created by xqm on ${ctime}.
 */
 @Service
 @Transactional
 @BaseService
-public class ${model}ServiceImpl extends BaseServiceImpl<${model}Mapper, ${model}, ${model}Example> implements ${model}Service {
-
+public class ${model}ServiceImpl extends BaseServiceImpl< ${model}, ${model}Mapper> implements ${model}Service {
     private static Logger _log = LoggerFactory.getLogger(${model}ServiceImpl.class);
 
     @Autowired

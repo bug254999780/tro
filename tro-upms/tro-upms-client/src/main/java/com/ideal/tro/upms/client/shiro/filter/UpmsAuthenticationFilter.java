@@ -73,8 +73,11 @@ public class UpmsAuthenticationFilter extends AuthenticationFilter {
         StringBuffer sso_server_url = new StringBuffer(PropertiesFileUtil.getInstance("tro-upms-client").get("tro.upms.sso.server.url"));
         // server需要登录
         String upmsType = PropertiesFileUtil.getInstance("tro-upms-client").get("tro.upms.type");
+        _log.info("sso_server_url is {},upmsType is {} ",sso_server_url,upmsType);
         if ("server".equals(upmsType)) {
-            WebUtils.toHttp(response).sendRedirect(sso_server_url.append("/sso/login").toString());
+            String s = sso_server_url.append("/sso/login").toString();
+            _log.info(" WebUtils.toHttp(response).sendRedirect is {} ",s);
+            WebUtils.toHttp(response).sendRedirect(s);
             return false;
         }
         sso_server_url.append("/sso/index").append("?").append("appid").append("=").append(PropertiesFileUtil.getInstance("tro-upms-client").get("tro.upms.appID"));
@@ -86,6 +89,7 @@ public class UpmsAuthenticationFilter extends AuthenticationFilter {
             backurl.append("?").append(queryString);
         }
         sso_server_url.append("&").append("backurl").append("=").append(URLEncoder.encode(backurl.toString(), "utf-8"));
+        _log.info("sso_server_url is {} ",sso_server_url.toString());
         WebUtils.toHttp(response).sendRedirect(sso_server_url.toString());
         return false;
     }

@@ -10,6 +10,7 @@
 
     <artifactId>tro-upms-client</artifactId>
     <packaging>jar</packaging>
+    <version>1.0.0</version>
 
     <name>tro-upms-client</name>
     <url>http://www.zhangshuzheng.cn</url>

@@ -14,7 +14,7 @@
 
     <dubbo:protocol name="dubbo" port="20881"/>
 
-    <dubbo:monitor address="120.26.198.195:6060"/>
+    <!--<dubbo:monitor address="120.26.198.195:6060"/>-->
     <!--<dubbo:monitor protocol="registry"/>-->
 
     <!-- 系统 -->

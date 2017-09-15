@@ -16,4 +16,5 @@ generatorConfig.xml
 **/resources/tro-admin
 **/target
 /**/**/target/
+**/generator
 
